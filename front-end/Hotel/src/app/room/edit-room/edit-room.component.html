@@ -1,0 +1,77 @@
+<div class="topnav">
+  <a class="active" routerLink="/managerHome">Home</a>
+  <a routerLink="/room">Rooms</a>
+  <a routerLink="/staff">Staff</a>
+  <a routerLink="/">Inventory</a>
+  <div class="lg">
+    <a routerLink="/">Log out</a>
+</div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content white-text">
+          <div class="row">
+            <div class="col s5">
+              <form #editroomForm="ngForm" (ngSubmit)="onSubmit(editroomForm)">
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="roomService.selectedRoom._id">
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input type="text" name="roomNo" #name="ngModel" [(ngModel)]=rno>
+                      <label>Room Number :
+                        <label class="red-text">*</label>
+                      </label>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="roomType" #name="ngModel" [(ngModel)]=rty required>
+                    <label>Room Type :
+                      <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="occupancy" #name="ngModel" [(ngModel)]=occ >
+                    <label>Occupancy :</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="price" #name="ngModel" [(ngModel)]=pri >
+                    <label>Price :</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input type="text" name="description" #name="ngModel" [(ngModel)]=des>
+                      <label>Description :</label>
+                    </div>
+                  </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input type="text" name="status" #name="ngModel" [(ngModel)]=sta>
+                      <label>Status :</label>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <button class="btn btn-custom right" type="button" >Reset</button>
+                    <button class="btn btn-custom right" type="submit" [disabled]="!editroomForm.valid">Add</button>
+                    <button mat-raised-button color="accent" routerLink="/room">Back</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col s7">
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+
+  

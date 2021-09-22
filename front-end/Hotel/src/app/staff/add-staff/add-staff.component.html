@@ -1,0 +1,65 @@
+<div class="topnav">
+  <a class="active" routerLink="/managerHome">Home</a>
+  <a routerLink="/room">Rooms</a>
+  <a routerLink="/staff">Staff</a>
+  <a routerLink="/">Inventory</a>
+  <div class="lg">
+    <a routerLink="/">Log out</a>
+</div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content white-text">
+          <div class="row">
+            <div class="col s5">
+              <form #addstaffForm="ngForm" (ngSubmit)="onSubmit(addstaffForm)">
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="staffService.selectedStaff._id">
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input type="text" name="staffNo" #name="ngModel" [(ngModel)]="staffService.selectedStaff.staffNo">
+                      <label>Staff Number :
+                        <label class="red-text">*</label>
+                      </label>
+                    </div>
+                  </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="name" #name="ngModel" [(ngModel)]="staffService.selectedStaff.name" required>
+                    <label>Name :
+                      <label class="red-text">*</label>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="department" #name="ngModel" [(ngModel)]="staffService.selectedStaff.department" >
+                    <label>Department :</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" name="salary" #name="ngModel" [(ngModel)]="staffService.selectedStaff.salary" >
+                    <label>Salary :</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <button class="btn btn-custom right" type="button" (click)="resetForm(addstaffForm)">Reset</button>
+                    <button class="btn btn-custom right" type="submit" [disabled]="!addstaffForm.valid">Add</button>
+                    <button mat-raised-button color="accent" routerLink="/staff">Back</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col s7">
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+
+  

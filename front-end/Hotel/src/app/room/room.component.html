@@ -1,0 +1,54 @@
+<div class="topnav">
+  <a class="active" routerLink="/managerHome">Home</a>
+  <a routerLink="/room">Rooms</a>
+  <a routerLink="/staff">Staff</a>
+  <a routerLink="/">Inventory</a>
+  <div class="lg">
+    <a routerLink="/">Log out</a>
+</div>
+</div>
+<div class="back">
+<form #roomForm="ngForm" (ngSubmit)="onSubmit(roomForm)">
+    <div class="search">  
+    <h3>Search Room</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Room Type</mat-label>
+        <mat-select [(ngModel)]="roomType" name="room">
+          <mat-option *ngFor="let room of rooms" [value]="room.value">
+            {{room.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" (click)='refershRoomList()'>Search</button>
+      <button class="addroom" mat-raised-button color="accent" routerLink="/addroom">Add Room</button>
+  
+      <table class="responsive-table highlight">
+        <thead>
+          <tr>
+            <th>Room No</th>
+            <th>Room Type</th>
+            <th>Occupancy</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+  
+        <tr *ngFor="let rom of roomService.rooms">
+         <td>{{rom.roomNo}}</td>
+         <td>{{rom.roomType}}</td>
+         <td>{{rom.occupancy}}</td>
+         <td>{{rom.price}}</td>
+         <td>{{rom.description}}</td>
+         <td>{{rom.status}}</td>
+         <td >
+        <button mat-raised-button color="accent" (click)="onSelect(rom)">Edit</button>
+        </td>
+        <td><button mat-raised-button color="warn" (click)="onDeleteroom(rom.roomNo,roomForm)">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+
+    </form>
+  </div>

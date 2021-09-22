@@ -1,0 +1,44 @@
+<div class="topnav">
+  <a class="active" routerLink="/userHome">Home</a>
+  <a routerLink="/search">Search Rooms</a>
+  <a routerLink="/showbooking">Show Bookings</a>
+  <div class="lg">
+    <a routerLink="/">Log out</a>
+</div>
+</div>
+
+<form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+  <div class="search">  
+  <h3>Search Room</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Room Type</mat-label>
+      <mat-select [(ngModel)]="roomType" name="room">
+        <mat-option *ngFor="let room of rooms" [value]="room.value">
+          {{room.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" (click)='refershRoomList()'>Search</button>
+
+    <table class="responsive-table highlight">
+      <thead>
+        <tr>
+          <th>Room No</th>
+          <th>Room Type</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tr *ngFor="let rom of roomService.rooms">
+       <td>{{rom.roomNo}}</td>
+       <td>{{rom.roomType}}</td>
+       <td>{{rom.price}}</td>
+       <td (click)="onSelect(rom)">
+      <button mat-raised-button color="accent">Book</button>
+      </td>
+      </tr>
+    </table>
+  </div>
+  </form>

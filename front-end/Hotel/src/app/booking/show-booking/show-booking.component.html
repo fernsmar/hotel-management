@@ -1,0 +1,38 @@
+<div class="topnav">
+  <a class="active" routerLink="/userHome">Home</a>
+  <a routerLink="/search">Search Rooms</a>
+  <a routerLink="/showbooking">Show Bookings</a>
+  <div class="lg">
+    <a routerLink="/">Log out</a>
+</div>
+</div>
+
+
+<form #book1Form="ngForm">
+<table class="responsive-table highlight">
+    <thead>
+      <tr>
+        <th>Room No</th>
+        <th>Name</th>
+        <th>Children</th>
+        <th>Adult</th>
+        <th>Checkin</th>
+        <th>checkout</th>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let book of bookingService.bookings">
+     <td>{{book.roomNo}}</td>
+     <td>{{book.name}}</td>
+     <td>{{book.children}}</td>
+     <td>{{book.adult}}</td>
+     <td>{{book.checkin}}</td>
+     <td>{{book.checkout}}</td>
+     <td > 
+    <button mat-raised-button color="accent" (click)="onCheckout(book._id,book1Form)" >Checkout</button>
+    </td>
+    <td><button mat-raised-button color="warn" (click)="onPayment()">Pay Bill</button></td>
+    </tr>
+  </table>
+
+</form>

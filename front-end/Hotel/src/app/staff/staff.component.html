@@ -1,0 +1,48 @@
+<div class="topnav">
+  <a class="active" routerLink="/managerHome">Home</a>
+  <a routerLink="/room">Rooms</a>
+  <a routerLink="/staff">Staff</a>
+  <a routerLink="/">Inventory</a>
+  <div class="lg">
+    <a routerLink="/">Log out</a>
+</div>
+</div>
+
+<form #staffForm="ngForm" (ngSubmit)="onSubmit(staffForm)">
+    <div class="search">  
+    <h3>Search Staff</h3>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" name="staffNo" #name="ngModel" [(ngModel)]="staffService.selectedStaff.staffNo" required>
+          <label>staffNo :
+            <label class="red-text">*</label>
+          </label>
+        </div>
+      </div>
+      
+      <button mat-raised-button color="primary" (click)='refershStaffList()'>Search</button>
+      <button class="addstaff" mat-raised-button color="accent" routerLink="/addstaff">Add Staff</button>
+  
+      <table class="responsive-table highlight">
+        <thead>
+          <tr>
+            <th>Staff No</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+  
+        <tr *ngFor="let sta of staffService.staffs">
+         <td>{{sta.staffNo}}</td>
+         <td>{{sta.name}}</td>
+         <td>{{sta.department}}</td>
+         <td>{{sta.salary}}</td>
+         <td >
+        <button mat-raised-button color="accent" (click)="onSelect(sta)">Edit</button>
+        </td>
+        <td><button mat-raised-button color="warn" (click)="onDeletestaff(sta.staffNo,staffForm)">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+    </form>
