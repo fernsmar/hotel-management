@@ -1,1 +1,1 @@
-# hotel-management System
+# Hotel-Management System using MEAN Stack
